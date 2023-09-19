@@ -42,7 +42,6 @@ def get_file_data(message):
     if file_type == 'document':
         file_id = message.document.file_id
         file_name = message.document.file_name
-        save_file_id(file_id)
     elif file_type == 'photo':
         bot.send_message(message.chat.id, "Необходим файл")
     elif file_type == 'video':
@@ -123,11 +122,6 @@ def send_statistics(message, search, context, region, quiz, brand, total):
     Брендовые: {brand} шт.
     Всего {total}
     **""", reply_to_message_id=message.id)
-
-
-def save_file_id(file_id):
-    with open("saved_file_ids.txt", "a") as file:
-        file.write(file_id + "\n")
 
 
 @bot.message_handler(commands=['start'])
